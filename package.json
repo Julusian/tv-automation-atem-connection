@@ -45,7 +45,7 @@
     "reset": "git clean -dfx && git reset --hard && yarn",
     "validate:dependencies": "yarn audit && yarn license-validate",
     "license-validate": "node-license-validator -p -d --allow-licenses MIT BSD BSD-3-Clause ISC Apache",
-    "postinstall": "yarn build"
+    "postinstall": "yarn install --ignore-scripts && yarn build"
   },
   "scripts-info": {
     "info": "Display information about the scripts",
