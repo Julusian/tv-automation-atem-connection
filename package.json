@@ -1,5 +1,5 @@
 {
-  "name": "atem-connection",
+  "name": "@julusian/test-lib",
   "version": "1.0.0-0",
   "description": "Typescript Node.js library for connecting with an ATEM switcher.",
   "main": "dist/index.js",
@@ -108,6 +108,11 @@
     "tslib": "^1.9.0",
     "wavefile": "^8.4.4"
   },
+  "files": [
+	  "dist/",
+	  "README.md",
+	  "CHANGELOG.md"
+  ],
   "standard-version": {
     "message": "chore(release): %s [skip ci]",
     "tagPrefix": ""
