@@ -25,6 +25,7 @@ import { Util } from './lib/atemUtil'
 import * as Enums from './enums'
 import { AudioChannel, AudioMasterChannel } from './state/audio'
 import exitHook = require('exit-hook')
+import { ThreadedClass } from 'threadedclass'
 
 export interface AtemOptions {
 	address?: string,
@@ -523,6 +524,10 @@ export class Atem extends EventEmitter {
 		const command = new Commands.AudioMixerMasterCommand()
 		command.updateProps(props)
 		return this.sendCommand(command)
+	}
+
+	testThing (): ThreadedClass<Commands.CutCommand> {
+		return new Commands.CutCommand() as any
 	}
 
 	private _mutateState (command: AbstractCommand) {
