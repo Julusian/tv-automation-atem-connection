@@ -107,6 +107,7 @@ jobs:
       # Build and deploy
       - run: yarn install
       - run: yarn build
+      - run: yarn cleanse #TODO - rename this action?
       - run:
           name: Write NPM Token to ~/.npmrc
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
