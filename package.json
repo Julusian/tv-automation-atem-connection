@@ -45,7 +45,8 @@
     "reset": "git clean -dfx && git reset --hard && yarn",
     "validate:dependencies": "yarn audit && yarn license-validate",
     "license-validate": "node-license-validator -p -d --allow-licenses MIT BSD BSD-3-Clause ISC Apache",
-    "postinstall": "yarn install --ignore-scripts && yarn build"
+    "postinstall": "yarn install --ignore-scripts && yarn build",
+    "cleanse": "node scripts/cleanse.js postinstall"
   },
   "scripts-info": {
     "info": "Display information about the scripts",
@@ -109,9 +110,9 @@
     "wavefile": "^8.4.4"
   },
   "files": [
-	  "dist/",
-	  "README.md",
-	  "CHANGELOG.md"
+    "dist/",
+    "README.md",
+    "CHANGELOG.md"
   ],
   "standard-version": {
     "message": "chore(release): %s [skip ci]",
