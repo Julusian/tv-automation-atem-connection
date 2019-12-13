@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/nrkno/tv-automation-atem-connection/compare/1.3.1...1.3.2) (2019-12-13)
+
+
+### Bug Fixes
+
+* inverted condition ([8140413](https://github.com/nrkno/tv-automation-atem-connection/commit/8140413fcff82783a7008c31c76a682c6b6d110c))
+
 ### [1.3.1](https://github.com/nrkno/tv-automation-atem-connection/compare/1.3.0...1.3.1) (2019-12-13)
 
 
