@@ -105,7 +105,7 @@ jobs:
       - run:
           name: Determine release type
           command: |
-            if git log --format=oneline -n 1 | grep -q "\[release\]"; then
+            if ! git log --format=oneline -n 1 | grep -q "\[release\]"; then
               export RELEASE_ARGS="--prerelease --skip.changelog --skip.tag"
               export PUBLISH_ARGS="--tag nightly"
             fi
