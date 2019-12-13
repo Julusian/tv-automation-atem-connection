@@ -102,7 +102,14 @@ jobs:
       # Clean working tree, tag, and push
       - run: git config --global user.email "git@julusian.co.uk"
       - run: git config --global user.name "Julusian"
-      - run: yarn release --prerelease --skip.changelog --skip.tag
+      - run:
+          name: Determine release type
+          command: |
+            if git log --format=oneline -n 1 | grep -q "\[release\]"; then
+              export RELEASE_ARGS="--prerelease --skip.changelog --skip.tag"
+              export PUBLISH_ARGS="--tag nightly"
+            fi
+      - run: yarn release $RELEASE_ARGS
       - run: git push --follow-tags origin HEAD
       # Build and deploy
       - run: yarn install
@@ -112,7 +119,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run:
           name: Publish to NPM with yarn
-          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000
+          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 $PUBLISH_ARGS
 
 workflows:
   version: 2
