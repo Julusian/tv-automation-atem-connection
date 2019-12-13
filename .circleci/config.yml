@@ -106,8 +106,11 @@ jobs:
           name: Determine release type
           command: |
             if ! git log --format=oneline -n 1 | grep -q "\[release\]"; then
+              echo "Pre-release"
               export RELEASE_ARGS="--prerelease --skip.changelog --skip.tag"
               export PUBLISH_ARGS="--tag nightly"
+            else
+              echo "Release"
             fi
       - run: yarn release $RELEASE_ARGS
       - run: git push --follow-tags origin HEAD
