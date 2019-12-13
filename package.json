@@ -1,5 +1,5 @@
 {
-  "name": "atem-connection",
+  "name": "@julusian/atem-connection",
   "version": "1.2.0",
   "description": "Typescript Node.js library for connecting with an ATEM switcher.",
   "main": "dist/index.js",
