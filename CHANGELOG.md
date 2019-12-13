@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/nrkno/tv-automation-atem-connection/compare/1.3.0...1.3.1) (2019-12-13)
+
+
+### Bug Fixes
+
+* change package name because npm has rubbish permissions ([aa66953](https://github.com/nrkno/tv-automation-atem-connection/commit/aa66953323d02ddcebad4fc0da3dbee67e5ba760))
+* selectively prerelease or release ([4d02d25](https://github.com/nrkno/tv-automation-atem-connection/commit/4d02d25cb889473b9df4e66d35cd48c1b7d1f235))
+* tag as prerelease ([ad71c22](https://github.com/nrkno/tv-automation-atem-connection/commit/ad71c22e573025e834c947635a39bdae27e54f0c))
+
 ## [1.3.0](https://github.com/nrkno/tv-automation-atem-connection/compare/0.6.0...1.3.0) (2019-12-13)
 
 
