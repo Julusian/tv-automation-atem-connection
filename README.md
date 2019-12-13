@@ -1,9 +1,8 @@
-# Sofie: The Modern TV News Studio Automation System (ATEM connection library)
-[![CircleCI](https://circleci.com/gh/nrkno/tv-automation-atem-connection.svg?style=svg)](https://circleci.com/gh/nrkno/tv-automation-atem-connection)
-[![codecov](https://codecov.io/gh/nrkno/tv-automation-atem-connection/branch/master/graph/badge.svg)](https://codecov.io/gh/nrkno/tv-automation-atem-connection)
+# ATEM connection library
 
-This library is used in the [**Sofie** TV News Studio Automation System](https://github.com/nrkno/Sofie-TV-automation/) for connecting to Blackmagic Design ATEM devices.
+This is a testing ground for [atem-connection](https://github.com/nrkno/tv-automation-atem-connection)
 
+As such it will often be far ahead in some areas, but behind in others compared to atem-connection.
 
 ## Technology highlights
 - Typescript
@@ -54,10 +53,6 @@ myAtem.on('stateChanged', function(err, state) {
   console.log(state); // catch the ATEM state.
 });
 ```
-
-### Documentation
-
-You can find the generated type docs [here](https://nrkno.github.io/tv-automation-atem-connection/).
 
 ### Events
 
