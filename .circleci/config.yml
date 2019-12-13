@@ -116,7 +116,7 @@ jobs:
             fi
       - run: yarn release $RELEASE_ARGS
       - run: 
-          name: Determine release type
+          name: Git push
           command: |
             if ! [ "$RELEASE_ARGS" ]; then
               git push --follow-tags origin HEAD
