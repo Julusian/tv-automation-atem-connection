@@ -102,7 +102,7 @@ jobs:
       # Clean working tree, tag, and push
       - run: git config --global user.email "git@julusian.co.uk"
       - run: git config --global user.name "Julusian"
-      - run: yarn release
+      - run: yarn release --prerelease --skip.changelog --skip.tag
       - run: git push --follow-tags origin HEAD
       # Build and deploy
       - run: yarn install
