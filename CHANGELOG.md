@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.4](https://github.com/nrkno/tv-automation-atem-connection/compare/1.3.3...1.3.4) (2019-12-13)
+
+
+### Bug Fixes
+
+* name [release] ([1946112](https://github.com/nrkno/tv-automation-atem-connection/commit/1946112fc2bd85defd6ce283c7d927669eb45722))
+* persist env variables ([57774fb](https://github.com/nrkno/tv-automation-atem-connection/commit/57774fb839bdaee3763a9cf342b85fcc5a517ffb))
+* use circleci build number and dont commit ([7cba654](https://github.com/nrkno/tv-automation-atem-connection/commit/7cba6547d41128b2fbdc8f745bd1dfd0d542d558))
+
 ### [1.3.3](https://github.com/nrkno/tv-automation-atem-connection/compare/1.3.2...1.3.3) (2019-12-13)
 
 ### [1.3.2](https://github.com/nrkno/tv-automation-atem-connection/compare/1.3.1...1.3.2) (2019-12-13)
