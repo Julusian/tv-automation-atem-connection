@@ -107,8 +107,10 @@ jobs:
           command: |
             if ! git log --format=oneline -n 1 | grep -q "\[release\]"; then
               echo "Pre-release"
-              export RELEASE_ARGS="--prerelease --skip.changelog --skip.tag"
-              export PUBLISH_ARGS="--tag nightly"
+
+              echo ' export RELEASE_ARGS="--prerelease --skip.changelog --skip.tag"' >> $BASH_ENV
+              echo 'export PUBLISH_ARGS="--tag nightly"' >> $BASH_ENV
+              source $BASH_ENV
             else
               echo "Release"
             fi
