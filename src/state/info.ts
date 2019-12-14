@@ -1,35 +1,54 @@
 import { Model, ProtocolVersion } from '../enums'
 
-export interface VersionProps {
-	readonly major: number
-	readonly minor: number
-}
-
 export interface AtemCapabilites {
-	readonly MEs: number
+	readonly mixEffects: number
 	readonly sources: number
-	readonly colorGenerators: number
 	readonly auxilliaries: number
-	readonly talkbackOutputs: number
+	readonly mixMinusOutputs: number
 	readonly mediaPlayers: number
 	readonly serialPorts: number
 	readonly maxHyperdecks: number
 	readonly DVEs: number
 	readonly stingers: number
-	readonly hasSuperSources: boolean
 	readonly superSources: number
-	readonly talkbackOverSDI: number
+	// readonly talkbackOverSDI: number
+	readonly downstreamKeyers: number
+	readonly cameraControl: boolean
+	readonly advancedChromaKeyers: boolean
+	readonly multiViewers: number
+}
+
+export interface MixEffectInfo {
+	readonly keyCount: number
 }
 
 export interface SuperSourceInfo {
-	boxCount: number
+	readonly boxCount: number
+}
+
+export interface AudioMixerInfo {
+	readonly inputs: number
+	readonly monitors: number
+}
+
+export interface MacroPoolInfo {
+	readonly macroCount: number
+}
+
+export interface MediaPoolInfo {
+	readonly stillCount: number
+	readonly clipCount: number
 }
 
 export class DeviceInfo {
-	apiVersion: ProtocolVersion
-	capabilities: AtemCapabilites
-	model: Model
-	productIdentifier: string
-	superSources: SuperSourceInfo[] = []
-	power: boolean[]
+	public apiVersion: ProtocolVersion = 0
+	public capabilities?: AtemCapabilites
+	public model: Model = Model.Unknown
+	public productIdentifier?: string
+	public superSources: Array<SuperSourceInfo | undefined> = []
+	public mixEffects: Array<MixEffectInfo | undefined> = []
+	public power: boolean[] = []
+	public audioMixer?: AudioMixerInfo
+	public macroPool?: MacroPoolInfo
+	public mediaPool?: MediaPoolInfo
 }

@@ -1,16 +1,22 @@
-import AbstractCommand from '../../AbstractCommand'
+import { BasicWritableCommand, DeserializedCommand } from '../../CommandBase'
 import { AtemState } from '../../../state'
-import { Util } from '../../..'
 
-export class PreviewTransitionCommand extends AbstractCommand {
-	rawName = 'CTPr'
-	mixEffect: number
+export interface PreviewProps {
+	preview: boolean
+}
 
-	properties: {
-		preview: boolean
+export class PreviewTransitionCommand extends BasicWritableCommand<PreviewProps> {
+	public static readonly rawName = 'CTPr'
+
+	public readonly mixEffect: number
+
+	constructor (mixEffect: number, preview: boolean) {
+		super({ preview })
+
+		this.mixEffect = mixEffect
 	}
 
-	serialize () {
+	public serialize () {
 		const buffer = Buffer.alloc(4)
 		buffer.writeUInt8(this.mixEffect, 0)
 		buffer.writeUInt8(this.properties.preview ? 1 : 0, 1)
@@ -18,22 +24,31 @@ export class PreviewTransitionCommand extends AbstractCommand {
 	}
 }
 
-export class PreviewTransitionUpdateCommand extends AbstractCommand {
-	rawName = 'TrPr'
-	mixEffect: number
+export class PreviewTransitionUpdateCommand extends DeserializedCommand<PreviewProps> {
+	public static readonly rawName = 'TrPr'
 
-	properties: {
-		preview: boolean
+	public readonly mixEffect: number
+
+	constructor (mixEffect: number, properties: PreviewProps) {
+		super(properties)
+
+		this.mixEffect = mixEffect
 	}
 
-	deserialize (rawCommand: Buffer) {
-		this.mixEffect = Util.parseNumberBetween(rawCommand[0], 0, 3)
-		this.properties = {
-			preview: rawCommand[1] === 1
+	public static deserialize (rawCommand: Buffer): PreviewTransitionUpdateCommand {
+		const mixEffect = rawCommand.readUInt8(0)
+		const properties = {
+			preview: rawCommand.readUInt8(1) === 1
 		}
+
+		return new PreviewTransitionUpdateCommand(mixEffect, properties)
 	}
 
-	applyToState (state: AtemState) {
+	public applyToState (state: AtemState) {
+		if (!state.info.capabilities || this.mixEffect >= state.info.capabilities.mixEffects) {
+			throw new Error(`MixEffect ${this.mixEffect} is not valid`)
+		}
+
 		const mixEffect = state.video.getMe(this.mixEffect)
 		mixEffect.transitionPreview = this.properties.preview
 		return `video.ME.${this.mixEffect}.transitionPreview`

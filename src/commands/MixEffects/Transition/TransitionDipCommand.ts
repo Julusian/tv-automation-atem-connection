@@ -1,48 +1,58 @@
-import AbstractCommand from '../../AbstractCommand'
+import { WritableCommand, DeserializedCommand } from '../../CommandBase'
 import { AtemState } from '../../../state'
 import { DipTransitionSettings } from '../../../state/video'
-import { Util } from '../../..'
 
-export class TransitionDipCommand extends AbstractCommand {
-	static MaskFlags = {
+export class TransitionDipCommand extends WritableCommand<DipTransitionSettings> {
+	public static MaskFlags = {
 		rate: 1 << 0,
 		input: 1 << 1
 	}
+	public static readonly rawName = 'CTDp'
 
-	rawName = 'CTDp'
-	mixEffect: number
+	public readonly mixEffect: number
 
-	properties: DipTransitionSettings
+	constructor (mixEffect: number) {
+		super()
 
-	updateProps (newProps: Partial<DipTransitionSettings>) {
-		this._updateProps(newProps)
+		this.mixEffect = mixEffect
 	}
 
-	serialize () {
+	public serialize () {
 		const buffer = Buffer.alloc(8)
 		buffer.writeUInt8(this.flag, 0)
 		buffer.writeUInt8(this.mixEffect, 1)
-		buffer.writeUInt8(this.properties.rate, 2)
-		buffer.writeUInt16BE(this.properties.input, 4)
+		buffer.writeUInt8(this.properties.rate || 0, 2)
+		buffer.writeUInt16BE(this.properties.input || 0, 4)
 		return buffer
 	}
 }
 
-export class TransitionDipUpdateCommand extends AbstractCommand {
-	rawName = 'TDpP'
-	mixEffect: number
+export class TransitionDipUpdateCommand extends DeserializedCommand<DipTransitionSettings> {
+	public static readonly rawName = 'TDpP'
 
-	properties: DipTransitionSettings
+	public readonly mixEffect: number
 
-	deserialize (rawCommand: Buffer) {
-		this.mixEffect = Util.parseNumberBetween(rawCommand[0], 0, 3)
-		this.properties = {
-			rate: Util.parseNumberBetween(rawCommand[1], 0, 250),
-			input: rawCommand[2] << 8 | (rawCommand[3] & 0xFF)
-		}
+	constructor (mixEffect: number, properties: DipTransitionSettings) {
+		super(properties)
+
+		this.mixEffect = mixEffect
 	}
 
-	applyToState (state: AtemState) {
+	public static deserialize (rawCommand: Buffer): TransitionDipUpdateCommand {
+		const mixEffect = rawCommand.readUInt8(0)
+		const properties = {
+			rate: rawCommand.readUInt8(1),
+			input: rawCommand.readUInt8(2) << 8 | (rawCommand.readUInt8(3) & 0xFF)
+		}
+
+		return new TransitionDipUpdateCommand(mixEffect, properties)
+	}
+
+	public applyToState (state: AtemState) {
+		if (!state.info.capabilities || this.mixEffect >= state.info.capabilities.mixEffects) {
+			throw new Error(`MixEffect ${this.mixEffect} is not valid`)
+		}
+
 		const mixEffect = state.video.getMe(this.mixEffect)
 		mixEffect.transitionSettings.dip = {
 			...this.properties

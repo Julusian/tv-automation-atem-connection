@@ -1,6 +1,8 @@
 import * as Enum from '../../enums'
 import * as USK from './upstreamKeyers'
-import { DownstreamKeyer } from './downstreamKeyers'
+import * as DSK from './downstreamKeyers'
+
+export { USK, DSK }
 
 export interface DipTransitionSettings {
 	rate: number
@@ -62,11 +64,11 @@ export interface TransitionProperties {
 }
 
 export interface TransitionSettings {
-	dip: DipTransitionSettings
-	DVE: DVETransitionSettings
-	mix: MixTransitionSettings
-	stinger: StingerTransitionSettings
-	wipe: WipeTransitionSettings
+	dip?: DipTransitionSettings
+	DVE?: DVETransitionSettings
+	mix?: MixTransitionSettings
+	stinger?: StingerTransitionSettings
+	wipe?: WipeTransitionSettings
 }
 
 export interface IMixEffect {
@@ -76,44 +78,57 @@ export interface IMixEffect {
 	transitionPreview: boolean
 	transitionPosition: number
 	transitionFramesLeft: number
-	fadeToBlack: FadeToBlackProperties
+	fadeToBlack?: FadeToBlackProperties
 	numberOfKeyers: number
 	transitionProperties: TransitionProperties
-	transitionSettings: TransitionSettings,
-	upstreamKeyers: { [index: number]: USK.UpstreamKeyer }
+	transitionSettings: TransitionSettings
+	upstreamKeyers: Array<USK.UpstreamKeyer | undefined>
 }
 
 export class MixEffect implements IMixEffect {
-	index: number
-	programInput: number
-	previewInput: number
-	inTransition: boolean
-	transitionPreview: boolean
-	transitionPosition: number
-	transitionFramesLeft: number
-	fadeToBlack: FadeToBlackProperties
-	numberOfKeyers: number
-	transitionProperties: TransitionProperties = {} as TransitionProperties
-	transitionSettings: TransitionSettings = {} as TransitionSettings
-	upstreamKeyers: { [index: number]: USK.UpstreamKeyer } = []
+	public readonly index: number
+	public programInput: number = 0
+	public previewInput: number = 0
+	public inTransition: boolean = false
+	public transitionPreview: boolean = false
+	public transitionPosition: number = 0
+	public transitionFramesLeft: number = 0
+	public fadeToBlack?: FadeToBlackProperties
+	public numberOfKeyers: number = 0
+	public transitionProperties: TransitionProperties
+	public transitionSettings: TransitionSettings = {}
+	public readonly upstreamKeyers: Array<USK.UpstreamKeyer | undefined> = []
 
 	constructor (index: number) {
 		this.index = index
+
+		this.transitionProperties = {
+			style: Enum.TransitionStyle.MIX,
+			selection: 1,
+			nextStyle: Enum.TransitionStyle.MIX,
+			nextSelection: 1
+		}
 	}
 
-	getUpstreamKeyer (index: number) {
-		if (!this.upstreamKeyers[index]) {
-			this.upstreamKeyers[index] = {
-				dveSettings: {} as USK.UpstreamKeyerDVESettings,
-				chromaSettings: {} as USK.UpstreamKeyerChromaSettings,
-				lumaSettings: {} as USK.UpstreamKeyerLumaSettings,
-				patternSettings: {} as USK.UpstreamKeyerPatternSettings,
-				flyKeyframes: [] as { [index: number]: USK.UpstreamKeyerFlyKeyframe },
-				flyProperties: {} as USK.UpstreamKeyerFlySettings
-			} as USK.UpstreamKeyer
+	public getUpstreamKeyer (index: number, dontCreate?: boolean): USK.UpstreamKeyer {
+		let usk = this.upstreamKeyers[index]
+		if (!usk) {
+			usk = {
+				upstreamKeyerId: index,
+				mixEffectKeyType: 0,
+				cutSource: 0,
+				fillSource: 0,
+				onAir: false,
+				flyEnabled: false,
+				flyKeyframes: []
+			}
+
+			if (!dontCreate) {
+				this.upstreamKeyers[index] = usk
+			}
 		}
 
-		return this.upstreamKeyers[index]
+		return usk
 	}
 }
 
@@ -157,13 +172,17 @@ export interface SuperSourceBorder {
 }
 
 export class SuperSource {
-	index: number
-	boxes: { [index: string]: SuperSourceBox } = {}
-	properties: SuperSourceProperties
-	border: SuperSourceBorder
+	public readonly index: number
+	public readonly boxes: [SuperSourceBox | undefined, SuperSourceBox | undefined, SuperSourceBox | undefined, SuperSourceBox | undefined]
+	public properties?: SuperSourceProperties
+	public border?: SuperSourceBorder
 
 	constructor (index: number) {
 		this.index = index
+
+		this.boxes = [
+			undefined, undefined, undefined, undefined
+		]
 	}
 }
 
@@ -175,32 +194,52 @@ export interface FadeToBlackProperties {
 }
 
 export class AtemVideoState {
-	ME: { [index: string]: MixEffect } = {}
-	downstreamKeyers: { [index: string]: DownstreamKeyer } = {}
-	auxilliaries: { [index: string]: number } = {}
-	superSources: { [index: string]: SuperSource } = {}
+	public readonly ME: Array<MixEffect | undefined> = []
+	public readonly downstreamKeyers: Array<DSK.DownstreamKeyer | undefined> = []
+	public readonly auxilliaries: Array<number | undefined> = []
+	public readonly superSources: Array<SuperSource | undefined> = []
 
-	getMe (index: number) {
-		if (!this.ME[index]) {
-			this.ME[index] = new MixEffect(index)
+	public getMe (index: number, dontCreate?: boolean): MixEffect {
+		let me = this.ME[index]
+		if (!me) {
+			me = new MixEffect(index)
+
+			if (!dontCreate) {
+				this.ME[index] = me
+			}
 		}
 
-		return this.ME[index]
+		return me
 	}
 
-	getSuperSource (index: number) {
-		if (!this.superSources[index]) {
-			this.superSources[index] = new SuperSource(index)
+	public getSuperSource (index: number, dontCreate?: boolean): SuperSource {
+		let ssrc = this.superSources[index]
+		if (!ssrc) {
+			ssrc = new SuperSource(index)
+
+			if (!dontCreate) {
+				this.superSources[index] = ssrc
+			}
 		}
 
-		return this.superSources[index]
+		return ssrc
 	}
 
-	getDownstreamKeyer (index: number) {
-		if (!this.downstreamKeyers[index]) {
-			this.downstreamKeyers[index] = {} as DownstreamKeyer
+	public getDownstreamKeyer (index: number, dontCreate?: boolean): DSK.DownstreamKeyer {
+		let dsk = this.downstreamKeyers[index]
+		if (!dsk) {
+			dsk = {
+				isAuto: false,
+				remainingFrames: 0,
+				onAir: false,
+				inTransition: false
+			}
+
+			if (!dontCreate) {
+				this.downstreamKeyers[index] = dsk
+			}
 		}
 
-		return this.downstreamKeyers[index]
+		return dsk
 	}
 }

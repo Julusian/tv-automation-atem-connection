@@ -1,16 +1,19 @@
-import AbstractCommand from '../AbstractCommand'
+import { BasicWritableCommand, DeserializedCommand } from '../CommandBase'
 import { AtemState } from '../../state'
-import { Util } from '../..'
+import { InputSource } from './PreviewInputCommand'
 
-export class ProgramInputCommand extends AbstractCommand {
-	rawName = 'CPgI'
-	mixEffect: number
+export class ProgramInputCommand extends BasicWritableCommand<InputSource> {
+	public static readonly rawName = 'CPgI'
 
-	properties: {
-		source: number
+	public readonly mixEffect: number
+
+	constructor (mixEffect: number, source: number) {
+		super({ source })
+
+		this.mixEffect = mixEffect
 	}
 
-	serialize () {
+	public serialize () {
 		const buffer = Buffer.alloc(4)
 		buffer.writeUInt8(this.mixEffect, 0)
 		buffer.writeUInt16BE(this.properties.source, 2)
@@ -18,22 +21,31 @@ export class ProgramInputCommand extends AbstractCommand {
 	}
 }
 
-export class ProgramInputUpdateCommand extends AbstractCommand {
-	rawName = 'PrgI'
-	mixEffect: number
+export class ProgramInputUpdateCommand extends DeserializedCommand<InputSource> {
+	public static readonly rawName = 'PrgI'
 
-	properties: {
-		source: number
+	public readonly mixEffect: number
+
+	constructor (mixEffect: number, properties: InputSource) {
+		super(properties)
+
+		this.mixEffect = mixEffect
 	}
 
-	deserialize (rawCommand: Buffer) {
-		this.mixEffect = Util.parseNumberBetween(rawCommand[0], 0, 3)
-		this.properties = {
+	public static deserialize (rawCommand: Buffer): ProgramInputUpdateCommand {
+		const mixEffect = rawCommand.readUInt8(0)
+		const properties = {
 			source: rawCommand.readUInt16BE(2)
 		}
+
+		return new ProgramInputUpdateCommand(mixEffect, properties)
 	}
 
-	applyToState (state: AtemState) {
+	public applyToState (state: AtemState) {
+		if (!state.info.capabilities || this.mixEffect >= state.info.capabilities.mixEffects) {
+			throw new Error(`MixEffect ${this.mixEffect} is not valid`)
+		}
+
 		const mixEffect = state.video.getMe(this.mixEffect)
 		mixEffect.programInput = this.properties.source
 		return `video.ME.${this.mixEffect}.programInput`

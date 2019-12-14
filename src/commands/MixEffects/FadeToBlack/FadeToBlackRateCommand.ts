@@ -1,16 +1,18 @@
-import AbstractCommand from '../../AbstractCommand'
+import { BasicWritableCommand, DeserializedCommand } from '../../CommandBase'
 import { AtemState } from '../../../state'
-import { Util } from '../../..'
 
-export class FadeToBlackRateCommand extends AbstractCommand {
-	rawName = 'FtbC'
-	mixEffect: number
+export class FadeToBlackRateCommand extends BasicWritableCommand<{ rate: number }> {
+	public static readonly rawName = 'FtbC'
 
-	properties: {
-		rate: number
+	public readonly mixEffect: number
+
+	constructor (mixEffect: number, rate: number) {
+		super({ rate })
+
+		this.mixEffect = mixEffect
 	}
 
-	serialize () {
+	public serialize () {
 		const buffer = Buffer.alloc(4)
 		buffer.writeUInt8(1, 0)
 		buffer.writeUInt8(this.mixEffect, 1)
@@ -19,24 +21,34 @@ export class FadeToBlackRateCommand extends AbstractCommand {
 	}
 }
 
-export class FadeToBlackRateUpdateCommand extends AbstractCommand {
-	rawName = 'FtbP'
-	mixEffect: number
+export class FadeToBlackRateUpdateCommand extends DeserializedCommand<{ rate: number }> {
+	public static readonly rawName = 'FtbP'
 
-	properties: {
-		rate: number
+	public readonly mixEffect: number
+
+	constructor (mixEffect: number, rate: number) {
+		super({ rate })
+
+		this.mixEffect = mixEffect
 	}
 
-	deserialize (rawCommand: Buffer) {
-		this.mixEffect = Util.parseNumberBetween(rawCommand[0], 0, 3)
-		this.properties = {
-			rate: rawCommand.readUInt8(1)
+	public static deserialize (rawCommand: Buffer) {
+		const mixEffect = rawCommand.readUInt8(0)
+		const rate = rawCommand.readUInt8(1)
+
+		return new FadeToBlackRateUpdateCommand(mixEffect, rate)
+	}
+
+	public applyToState (state: AtemState) {
+		if (!state.info.capabilities || this.mixEffect >= state.info.capabilities.mixEffects) {
+			throw new Error(`MixEffect ${this.mixEffect} is not valid`)
 		}
-	}
 
-	applyToState (state: AtemState) {
 		const mixEffect = state.video.getMe(this.mixEffect)
 		mixEffect.fadeToBlack = {
+			isFullyBlack: false,
+			inTransition: false,
+			remainingFrames: 0,
 			...mixEffect.fadeToBlack,
 			rate: this.properties.rate
 		}

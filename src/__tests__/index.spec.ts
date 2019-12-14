@@ -1,17 +1,8 @@
 import { Atem, Enums } from '../index'
-import { ProtocolVersion } from '../enums'
-
-function cleanupAtem (atem: Atem) {
-	const atem2 = atem as any
-	atem2.dataTransferManager.stop()
-
-	const sock = atem2.socket._socketProcess
-	sock.removeAllListeners()
-	sock.kill()
-}
+import { cleanupAtem } from './lib'
 
 test('Simple test', async () => {
-	const nb = new Atem()
+	const nb = new Atem({ disableMultithreaded: true })
 	try {
 		nb.on('error', () => null)
 
@@ -22,7 +13,7 @@ test('Simple test', async () => {
 })
 
 function createConnection (apiVersion: Enums.ProtocolVersion) {
-	const conn = new Atem({ debug: true })
+	const conn = new Atem({ debug: true, disableMultithreaded: true })
 	// conn.on('error', () => null)
 	conn.sendCommand = jest.fn()
 	conn.state.info.apiVersion = apiVersion
@@ -41,9 +32,8 @@ test('setSuperSourceProperties - 7.2', async () => {
 		}, 2)
 		expect(conn.sendCommand).toHaveBeenCalledTimes(1)
 		expect(conn.sendCommand).toHaveBeenNthCalledWith(1, {
-			rawName: 'CSSc',
 			flag: 12,
-			properties: {
+			_properties: {
 				artOption: 0,
 				artPreMultiplied: true
 			}
@@ -64,11 +54,9 @@ test('setSuperSourceProperties - 8.0', async () => {
 		}, 2)
 		expect(conn.sendCommand).toHaveBeenCalledTimes(1)
 		expect(conn.sendCommand).toHaveBeenNthCalledWith(1, {
-			rawName: 'CSSc',
-			minimumVersion: ProtocolVersion.V8_0,
 			ssrcId: 2,
 			flag: 12,
-			properties: {
+			_properties: {
 				artOption: 0,
 				artPreMultiplied: true
 			}
@@ -89,9 +77,8 @@ test('setSuperSourceBorder - 7.2', async () => {
 		}, 2)
 		expect(conn.sendCommand).toHaveBeenCalledTimes(1)
 		expect(conn.sendCommand).toHaveBeenNthCalledWith(1, {
-			rawName: 'CSSc',
 			flag: 139264,
-			properties: {
+			_properties: {
 				borderBevelSoftness: 12,
 				borderLuma: 3
 			}
@@ -112,11 +99,9 @@ test('setSuperSourceBorder - 8.0', async () => {
 		}, 2)
 		expect(conn.sendCommand).toHaveBeenCalledTimes(1)
 		expect(conn.sendCommand).toHaveBeenNthCalledWith(1, {
-			rawName: 'CSBd',
-			minimumVersion: ProtocolVersion.V8_0,
 			ssrcId: 2,
 			flag: 1088,
-			properties: {
+			_properties: {
 				borderBevelSoftness: 12,
 				borderLuma: 3
 			}
