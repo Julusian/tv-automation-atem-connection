@@ -2379,7 +2379,19 @@ img {
 					<a href="deviceinfo.html#apiversion" class="tsd-kind-icon">api<wbr>Version</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a href="deviceinfo.html#audiomixer" class="tsd-kind-icon">audio<wbr>Mixer</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a href="deviceinfo.html#capabilities" class="tsd-kind-icon">capabilities</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a href="deviceinfo.html#macropool" class="tsd-kind-icon">macro<wbr>Pool</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a href="deviceinfo.html#mediapool" class="tsd-kind-icon">media<wbr>Pool</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a href="deviceinfo.html#mixeffects" class="tsd-kind-icon">mix<wbr>Effects</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a href="deviceinfo.html#model" class="tsd-kind-icon">model</a>
@@ -2415,7 +2427,11 @@ img {
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="deviceinfo.html#apiversion" class="tsd-kind-icon">api<wbr>Version</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="deviceinfo.html#audiomixer" class="tsd-kind-icon">audio<wbr>Mixer</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="deviceinfo.html#capabilities" class="tsd-kind-icon">capabilities</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="deviceinfo.html#macropool" class="tsd-kind-icon">macro<wbr>Pool</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="deviceinfo.html#mediapool" class="tsd-kind-icon">media<wbr>Pool</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="deviceinfo.html#mixeffects" class="tsd-kind-icon">mix<wbr>Effects</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="deviceinfo.html#model" class="tsd-kind-icon">model</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="deviceinfo.html#power" class="tsd-kind-icon">power</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="deviceinfo.html#productidentifier" class="tsd-kind-icon">product<wbr>Identifier</a></li>
@@ -2430,60 +2446,100 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="apiversion" class="tsd-anchor"></a>
 				<h3>api<wbr>Version</h3>
-				<div class="tsd-signature tsd-kind-icon">api<wbr>Version<span class="tsd-signature-symbol">:</span> <a href="../enums/protocolversion.html" class="tsd-signature-type">ProtocolVersion</a></div>
+				<div class="tsd-signature tsd-kind-icon">api<wbr>Version<span class="tsd-signature-symbol">:</span> <a href="../enums/protocolversion.html" class="tsd-signature-type">ProtocolVersion</a><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/info.ts#L29">src/state/info.ts:29</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L44">src/state/info.ts:44</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+				<a name="audiomixer" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> audio<wbr>Mixer</h3>
+				<div class="tsd-signature tsd-kind-icon">audio<wbr>Mixer<span class="tsd-signature-symbol">:</span> <a href="../interfaces/audiomixerinfo.html" class="tsd-signature-type">AudioMixerInfo</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L51">src/state/info.ts:51</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="capabilities" class="tsd-anchor"></a>
-				<h3>capabilities</h3>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> capabilities</h3>
 				<div class="tsd-signature tsd-kind-icon">capabilities<span class="tsd-signature-symbol">:</span> <a href="../interfaces/atemcapabilites.html" class="tsd-signature-type">AtemCapabilites</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/info.ts#L30">src/state/info.ts:30</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L45">src/state/info.ts:45</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+				<a name="macropool" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> macro<wbr>Pool</h3>
+				<div class="tsd-signature tsd-kind-icon">macro<wbr>Pool<span class="tsd-signature-symbol">:</span> <a href="../interfaces/macropoolinfo.html" class="tsd-signature-type">MacroPoolInfo</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L52">src/state/info.ts:52</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+				<a name="mediapool" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> media<wbr>Pool</h3>
+				<div class="tsd-signature tsd-kind-icon">media<wbr>Pool<span class="tsd-signature-symbol">:</span> <a href="../interfaces/mediapoolinfo.html" class="tsd-signature-type">MediaPoolInfo</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L53">src/state/info.ts:53</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+				<a name="mixeffects" class="tsd-anchor"></a>
+				<h3>mix<wbr>Effects</h3>
+				<div class="tsd-signature tsd-kind-icon">mix<wbr>Effects<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/mixeffectinfo.html" class="tsd-signature-type">MixEffectInfo</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L49">src/state/info.ts:49</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="model" class="tsd-anchor"></a>
 				<h3>model</h3>
-				<div class="tsd-signature tsd-kind-icon">model<span class="tsd-signature-symbol">:</span> <a href="../enums/model.html" class="tsd-signature-type">Model</a></div>
+				<div class="tsd-signature tsd-kind-icon">model<span class="tsd-signature-symbol">:</span> <a href="../enums/model.html" class="tsd-signature-type">Model</a><span class="tsd-signature-symbol"> =&nbsp;Model.Unknown</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/info.ts#L31">src/state/info.ts:31</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L46">src/state/info.ts:46</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="power" class="tsd-anchor"></a>
 				<h3>power</h3>
-				<div class="tsd-signature tsd-kind-icon">power<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span></div>
+				<div class="tsd-signature tsd-kind-icon">power<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/info.ts#L34">src/state/info.ts:34</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L50">src/state/info.ts:50</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="productidentifier" class="tsd-anchor"></a>
-				<h3>product<wbr>Identifier</h3>
-				<div class="tsd-signature tsd-kind-icon">product<wbr>Identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> product<wbr>Identifier</h3>
+				<div class="tsd-signature tsd-kind-icon">product<wbr>Identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/info.ts#L32">src/state/info.ts:32</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L47">src/state/info.ts:47</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="supersources" class="tsd-anchor"></a>
 				<h3>super<wbr>Sources</h3>
-				<div class="tsd-signature tsd-kind-icon">super<wbr>Sources<span class="tsd-signature-symbol">:</span> <a href="../interfaces/supersourceinfo.html" class="tsd-signature-type">SuperSourceInfo</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+				<div class="tsd-signature tsd-kind-icon">super<wbr>Sources<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/supersourceinfo.html" class="tsd-signature-type">SuperSourceInfo</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/info.ts#L33">src/state/info.ts:33</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/info.ts#L48">src/state/info.ts:48</a></li>
 					</ul>
 				</aside>
 			</section>

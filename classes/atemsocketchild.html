@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TallyState | @julusian-test/atem-connection</title>
+	<title>AtemSocketChild | @julusian-test/atem-connection</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2372,17 +2372,26 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-enum tsd-is-external">
-			<a href="tallystate.html" class="tsd-kind-icon">Tally<wbr>State</a>
+		<li class="current tsd-kind-class tsd-is-external">
+			<a href="atemsocketchild.html" class="tsd-kind-icon">Atem<wbr>Socket<wbr>Child</a>
 			<ul>
-				<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
-					<a href="tallystate.html#none" class="tsd-kind-icon">None</a>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+					<a href="atemsocketchild.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
-				<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
-					<a href="tallystate.html#preview" class="tsd-kind-icon">Preview</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="atemsocketchild.html#connect" class="tsd-kind-icon">connect</a>
 				</li>
-				<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
-					<a href="tallystate.html#program" class="tsd-kind-icon">Program</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="atemsocketchild.html#disconnect" class="tsd-kind-icon">disconnect</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="atemsocketchild.html#log" class="tsd-kind-icon">log</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="atemsocketchild.html#restartconnection" class="tsd-kind-icon">restart<wbr>Connection</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="atemsocketchild.html#sendcommands" class="tsd-kind-icon">send<wbr>Commands</a>
 				</li>
 			</ul>
 		</li>
@@ -2390,52 +2399,262 @@ img {
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
+		<section class="tsd-panel tsd-hierarchy">
+			<h3>Hierarchy</h3>
+			<ul class="tsd-hierarchy">
+				<li>
+					<span class="target">AtemSocketChild</span>
+				</li>
+			</ul>
+		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section tsd-is-external">
-						<h3>Enumeration members</h3>
+						<h3>Constructors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external"><a href="tallystate.html#none" class="tsd-kind-icon">None</a></li>
-							<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external"><a href="tallystate.html#preview" class="tsd-kind-icon">Preview</a></li>
-							<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external"><a href="tallystate.html#program" class="tsd-kind-icon">Program</a></li>
+							<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external"><a href="atemsocketchild.html#constructor" class="tsd-kind-icon">constructor</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section tsd-is-external">
+						<h3>Methods</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="atemsocketchild.html#connect" class="tsd-kind-icon">connect</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="atemsocketchild.html#disconnect" class="tsd-kind-icon">disconnect</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="atemsocketchild.html#log" class="tsd-kind-icon">log</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="atemsocketchild.html#restartconnection" class="tsd-kind-icon">restart<wbr>Connection</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="atemsocketchild.html#sendcommands" class="tsd-kind-icon">send<wbr>Commands</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group tsd-is-external">
-			<h2>Enumeration members</h2>
-			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
-				<a name="none" class="tsd-anchor"></a>
-				<h3>None</h3>
-				<div class="tsd-signature tsd-kind-icon">None<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;0</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/enums/index.ts#L32">src/enums/index.ts:32</a></li>
-					</ul>
-				</aside>
+			<h2>Constructors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+				<a name="constructor" class="tsd-anchor"></a>
+				<h3>constructor</h3>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Atem<wbr>Socket<wbr>Child<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, onDisconnect<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, onLog<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, onCommandReceived<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, onCommandAcknowledged<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="atemsocketchild.html" class="tsd-signature-type">AtemSocketChild</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/lib/atemSocketChild.ts#L58">src/lib/atemSocketChild.ts:58</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>options: <span class="tsd-signature-type">object</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5>address<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+									</li>
+									<li class="tsd-parameter">
+										<h5>debug<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+									</li>
+									<li class="tsd-parameter">
+										<h5>port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<h5>onDisconnect: <span class="tsd-signature-type">function</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<h5>onLog: <span class="tsd-signature-type">function</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>message: <span class="tsd-signature-type">string</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<h5>onCommandReceived: <span class="tsd-signature-type">function</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, packetId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>payload: <span class="tsd-signature-type">Buffer</span></h5>
+													</li>
+													<li>
+														<h5>packetId: <span class="tsd-signature-type">number</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<h5>onCommandAcknowledged: <span class="tsd-signature-type">function</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>ids: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="atemsocketchild.html" class="tsd-signature-type">AtemSocketChild</a></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
-				<a name="preview" class="tsd-anchor"></a>
-				<h3>Preview</h3>
-				<div class="tsd-signature tsd-kind-icon">Preview<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;2</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/enums/index.ts#L34">src/enums/index.ts:34</a></li>
-					</ul>
-				</aside>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="connect" class="tsd-anchor"></a>
+				<h3>connect</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">connect<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/lib/atemSocketChild.ts#L94">src/lib/atemSocketChild.ts:94</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>address: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>port: <span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
-				<a name="program" class="tsd-anchor"></a>
-				<h3>Program</h3>
-				<div class="tsd-signature tsd-kind-icon">Program<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;1</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/enums/index.ts#L33">src/enums/index.ts:33</a></li>
-					</ul>
-				</aside>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="disconnect" class="tsd-anchor"></a>
+				<h3>disconnect</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">disconnect<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/lib/atemSocketChild.ts#L103">src/lib/atemSocketChild.ts:103</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="log" class="tsd-anchor"></a>
+				<h3>log</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/lib/atemSocketChild.ts#L146">src/lib/atemSocketChild.ts:146</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>message: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="restartconnection" class="tsd-anchor"></a>
+				<h3>restart<wbr>Connection</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">restart<wbr>Connection<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/lib/atemSocketChild.ts#L127">src/lib/atemSocketChild.ts:127</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="sendcommands" class="tsd-anchor"></a>
+				<h3>send<wbr>Commands</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">send<wbr>Commands<span class="tsd-signature-symbol">(</span>commands<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/lib/atemSocketChild.ts#L151">src/lib/atemSocketChild.ts:151</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>commands: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">

@@ -2387,9 +2387,6 @@ img {
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a href="atemaudiostate.html#numberofchannels" class="tsd-kind-icon">number<wbr>OfChannels</a>
 				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
-					<a href="atemaudiostate.html#getchannel" class="tsd-kind-icon">get<wbr>Channel</a>
-				</li>
 			</ul>
 		</li>
 	</ul>
@@ -2417,12 +2414,6 @@ img {
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="atemaudiostate.html#numberofchannels" class="tsd-kind-icon">number<wbr>OfChannels</a></li>
 						</ul>
 					</section>
-					<section class="tsd-index-section tsd-is-external">
-						<h3>Methods</h3>
-						<ul class="tsd-index-list">
-							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="atemaudiostate.html#getchannel" class="tsd-kind-icon">get<wbr>Channel</a></li>
-						</ul>
-					</section>
 				</div>
 			</section>
 		</section>
@@ -2431,68 +2422,42 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="channels" class="tsd-anchor"></a>
 				<h3>channels</h3>
-				<div class="tsd-signature tsd-kind-icon">channels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="audiochannel.html" class="tsd-signature-type">AudioChannel</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+				<div class="tsd-signature tsd-kind-icon">channels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/audiochannel.html" class="tsd-signature-type">AudioChannel</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/audio.ts#L24">src/state/audio.ts:24</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/audio.ts#L24">src/state/audio.ts:24</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="hasmonitor" class="tsd-anchor"></a>
-				<h3>has<wbr>Monitor</h3>
-				<div class="tsd-signature tsd-kind-icon">has<wbr>Monitor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> has<wbr>Monitor</h3>
+				<div class="tsd-signature tsd-kind-icon">has<wbr>Monitor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/audio.ts#L23">src/state/audio.ts:23</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/audio.ts#L23">src/state/audio.ts:23</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="master" class="tsd-anchor"></a>
-				<h3>master</h3>
-				<div class="tsd-signature tsd-kind-icon">master<span class="tsd-signature-symbol">:</span> <a href="audiomasterchannel.html" class="tsd-signature-type">AudioMasterChannel</a><span class="tsd-signature-symbol"> =&nbsp;new AudioMasterChannel()</span></div>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> master</h3>
+				<div class="tsd-signature tsd-kind-icon">master<span class="tsd-signature-symbol">:</span> <a href="../interfaces/audiomasterchannel.html" class="tsd-signature-type">AudioMasterChannel</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/audio.ts#L25">src/state/audio.ts:25</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/audio.ts#L25">src/state/audio.ts:25</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 				<a name="numberofchannels" class="tsd-anchor"></a>
-				<h3>number<wbr>OfChannels</h3>
-				<div class="tsd-signature tsd-kind-icon">number<wbr>OfChannels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> number<wbr>OfChannels</h3>
+				<div class="tsd-signature tsd-kind-icon">number<wbr>OfChannels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/audio.ts#L22">src/state/audio.ts:22</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/state/audio.ts#L22">src/state/audio.ts:22</a></li>
 					</ul>
 				</aside>
-			</section>
-		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-external">
-			<h2>Methods</h2>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
-				<a name="getchannel" class="tsd-anchor"></a>
-				<h3>get<wbr>Channel</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Channel<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="audiochannel.html" class="tsd-signature-type">AudioChannel</a></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/audio.ts#L27">src/state/audio.ts:27</a></li>
-							</ul>
-						</aside>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>index: <span class="tsd-signature-type">number</span></h5>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="audiochannel.html" class="tsd-signature-type">AudioChannel</a></h4>
-					</li>
-				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">

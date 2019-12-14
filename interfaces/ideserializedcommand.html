@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ClipBank | @julusian-test/atem-connection</title>
+	<title>IDeserializedCommand | @julusian-test/atem-connection</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2372,20 +2372,14 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-class tsd-is-external">
-			<a href="clipbank.html" class="tsd-kind-icon">Clip<wbr>Bank</a>
+		<li class="current tsd-kind-interface tsd-is-external">
+			<a href="ideserializedcommand.html" class="tsd-kind-icon">IDeserialized<wbr>Command</a>
 			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
-					<a href="clipbank.html#framecount" class="tsd-kind-icon">frame<wbr>Count</a>
+				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a href="ideserializedcommand.html#properties" class="tsd-kind-icon">properties</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
-					<a href="clipbank.html#frames" class="tsd-kind-icon">frames</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
-					<a href="clipbank.html#isused" class="tsd-kind-icon">is<wbr>Used</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
-					<a href="clipbank.html#name" class="tsd-kind-icon">name</a>
+				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<a href="ideserializedcommand.html#applytostate" class="tsd-kind-icon">apply<wbr>ToState</a>
 				</li>
 			</ul>
 		</li>
@@ -2397,8 +2391,73 @@ img {
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">ClipBank</span>
+					<span class="target">IDeserializedCommand</span>
 				</li>
+			</ul>
+		</section>
+		<section class="tsd-panel">
+			<h3>Implemented by</h3>
+			<ul class="tsd-hierarchy">
+				<li><a href="../classes/audiomixerconfigcommand.html" class="tsd-signature-type">AudioMixerConfigCommand</a></li>
+				<li><a href="../classes/audiomixerinputupdatecommand.html" class="tsd-signature-type">AudioMixerInputUpdateCommand</a></li>
+				<li><a href="../classes/audiomixermasterupdatecommand.html" class="tsd-signature-type">AudioMixerMasterUpdateCommand</a></li>
+				<li><a href="../classes/auxsourceupdatecommand.html" class="tsd-signature-type">AuxSourceUpdateCommand</a></li>
+				<li><a href="../classes/datatransferackcommand.html" class="tsd-signature-type">DataTransferAckCommand</a></li>
+				<li><a href="../classes/datatransfercompletecommand.html" class="tsd-signature-type">DataTransferCompleteCommand</a></li>
+				<li><a href="../classes/datatransferdatacommand.html" class="tsd-signature-type">DataTransferDataCommand</a></li>
+				<li><a href="../classes/datatransfererrorcommand.html" class="tsd-signature-type">DataTransferErrorCommand</a></li>
+				<li><a href="../classes/datatransferuploadcontinuecommand.html" class="tsd-signature-type">DataTransferUploadContinueCommand</a></li>
+				<li><a href="../classes/deserializedcommand.html" class="tsd-signature-type">DeserializedCommand</a></li>
+				<li><a href="../classes/downstreamkeypropertiescommand.html" class="tsd-signature-type">DownstreamKeyPropertiesCommand</a></li>
+				<li><a href="../classes/downstreamkeysourcescommand.html" class="tsd-signature-type">DownstreamKeySourcesCommand</a></li>
+				<li><a href="../classes/downstreamkeystatecommand.html" class="tsd-signature-type">DownstreamKeyStateCommand</a></li>
+				<li><a href="../classes/downstreamkeystatev8command.html" class="tsd-signature-type">DownstreamKeyStateV8Command</a></li>
+				<li><a href="../classes/fadetoblackrateupdatecommand.html" class="tsd-signature-type">FadeToBlackRateUpdateCommand</a></li>
+				<li><a href="../classes/fadetoblackstatecommand.html" class="tsd-signature-type">FadeToBlackStateCommand</a></li>
+				<li><a href="../classes/initcompletecommand.html" class="tsd-signature-type">InitCompleteCommand</a></li>
+				<li><a href="../classes/inputpropertiesupdatecommand.html" class="tsd-signature-type">InputPropertiesUpdateCommand</a></li>
+				<li><a href="../classes/lockobtainedcommand.html" class="tsd-signature-type">LockObtainedCommand</a></li>
+				<li><a href="../classes/lockstateupdatecommand.html" class="tsd-signature-type">LockStateUpdateCommand</a></li>
+				<li><a href="../classes/macropoolconfigcommand.html" class="tsd-signature-type">MacroPoolConfigCommand</a></li>
+				<li><a href="../classes/macropropertiescommand.html" class="tsd-signature-type">MacroPropertiesCommand</a></li>
+				<li><a href="../classes/macrorecordingstatuscommand.html" class="tsd-signature-type">MacroRecordingStatusCommand</a></li>
+				<li><a href="../classes/macrorunstatuscommand.html" class="tsd-signature-type">MacroRunStatusCommand</a></li>
+				<li><a href="../classes/mediaplayersourceupdatecommand.html" class="tsd-signature-type">MediaPlayerSourceUpdateCommand</a></li>
+				<li><a href="../classes/mediaplayerstatusupdatecommand.html" class="tsd-signature-type">MediaPlayerStatusUpdateCommand</a></li>
+				<li><a href="../classes/mediapoolclipdescriptioncommand.html" class="tsd-signature-type">MediaPoolClipDescriptionCommand</a></li>
+				<li><a href="../classes/mediapoolconfigcommand.html" class="tsd-signature-type">MediaPoolConfigCommand</a></li>
+				<li><a href="../classes/mediapoolframedescriptioncommand.html" class="tsd-signature-type">MediaPoolFrameDescriptionCommand</a></li>
+				<li><a href="../classes/mixeffectblockconfigcommand.html" class="tsd-signature-type">MixEffectBlockConfigCommand</a></li>
+				<li><a href="../classes/mixeffectkeychromaupdatecommand.html" class="tsd-signature-type">MixEffectKeyChromaUpdateCommand</a></li>
+				<li><a href="../classes/mixeffectkeydveupdatecommand.html" class="tsd-signature-type">MixEffectKeyDVEUpdateCommand</a></li>
+				<li><a href="../classes/mixeffectkeyflykeyframegetcommand.html" class="tsd-signature-type">MixEffectKeyFlyKeyframeGetCommand</a></li>
+				<li><a href="../classes/mixeffectkeyflypropertiesgetcommand.html" class="tsd-signature-type">MixEffectKeyFlyPropertiesGetCommand</a></li>
+				<li><a href="../classes/mixeffectkeylumaupdatecommand.html" class="tsd-signature-type">MixEffectKeyLumaUpdateCommand</a></li>
+				<li><a href="../classes/mixeffectkeyonairupdatecommand.html" class="tsd-signature-type">MixEffectKeyOnAirUpdateCommand</a></li>
+				<li><a href="../classes/mixeffectkeypropertiesgetcommand.html" class="tsd-signature-type">MixEffectKeyPropertiesGetCommand</a></li>
+				<li><a href="../classes/mixeffectkeyupdatecommand.html" class="tsd-signature-type">MixEffectKeyUpdateCommand</a></li>
+				<li><a href="../classes/multiviewersourceupdatecommand.html" class="tsd-signature-type">MultiViewerSourceUpdateCommand</a></li>
+				<li><a href="../classes/powerstatuscommand.html" class="tsd-signature-type">PowerStatusCommand</a></li>
+				<li><a href="../classes/previewinputupdatecommand.html" class="tsd-signature-type">PreviewInputUpdateCommand</a></li>
+				<li><a href="../classes/previewtransitionupdatecommand.html" class="tsd-signature-type">PreviewTransitionUpdateCommand</a></li>
+				<li><a href="../classes/productidentifiercommand.html" class="tsd-signature-type">ProductIdentifierCommand</a></li>
+				<li><a href="../classes/programinputupdatecommand.html" class="tsd-signature-type">ProgramInputUpdateCommand</a></li>
+				<li><a href="../classes/supersourceborderupdatecommand.html" class="tsd-signature-type">SuperSourceBorderUpdateCommand</a></li>
+				<li><a href="../classes/supersourceboxparametersupdatecommand.html" class="tsd-signature-type">SuperSourceBoxParametersUpdateCommand</a></li>
+				<li><a href="../classes/supersourceconfigcommand.html" class="tsd-signature-type">SuperSourceConfigCommand</a></li>
+				<li><a href="../classes/supersourcepropertiesupdatecommand.html" class="tsd-signature-type">SuperSourcePropertiesUpdateCommand</a></li>
+				<li><a href="../classes/supersourcepropertiesupdatev8command.html" class="tsd-signature-type">SuperSourcePropertiesUpdateV8Command</a></li>
+				<li><a href="../classes/tallybysourcecommand.html" class="tsd-signature-type">TallyBySourceCommand</a></li>
+				<li><a href="../classes/topologycommand.html" class="tsd-signature-type">TopologyCommand</a></li>
+				<li><a href="../classes/transitiondveupdatecommand.html" class="tsd-signature-type">TransitionDVEUpdateCommand</a></li>
+				<li><a href="../classes/transitiondipupdatecommand.html" class="tsd-signature-type">TransitionDipUpdateCommand</a></li>
+				<li><a href="../classes/transitionmixupdatecommand.html" class="tsd-signature-type">TransitionMixUpdateCommand</a></li>
+				<li><a href="../classes/transitionpositionupdatecommand.html" class="tsd-signature-type">TransitionPositionUpdateCommand</a></li>
+				<li><a href="../classes/transitionpropertiesupdatecommand.html" class="tsd-signature-type">TransitionPropertiesUpdateCommand</a></li>
+				<li><a href="../classes/transitionstingerupdatecommand.html" class="tsd-signature-type">TransitionStingerUpdateCommand</a></li>
+				<li><a href="../classes/transitionwipeupdatecommand.html" class="tsd-signature-type">TransitionWipeUpdateCommand</a></li>
+				<li><a href="../classes/versioncommand.html" class="tsd-signature-type">VersionCommand</a></li>
+				<li><a href="../classes/videomodeupdatecommand.html" class="tsd-signature-type">VideoModeUpdateCommand</a></li>
 			</ul>
 		</section>
 		<section class="tsd-panel-group tsd-index-group">
@@ -2408,10 +2467,13 @@ img {
 					<section class="tsd-index-section tsd-is-external">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="clipbank.html#framecount" class="tsd-kind-icon">frame<wbr>Count</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="clipbank.html#frames" class="tsd-kind-icon">frames</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="clipbank.html#isused" class="tsd-kind-icon">is<wbr>Used</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="clipbank.html#name" class="tsd-kind-icon">name</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="ideserializedcommand.html#properties" class="tsd-kind-icon">properties</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section tsd-is-external">
+						<h3>Methods</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="ideserializedcommand.html#applytostate" class="tsd-kind-icon">apply<wbr>ToState</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2419,45 +2481,44 @@ img {
 		</section>
 		<section class="tsd-panel-group tsd-member-group tsd-is-external">
 			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
-				<a name="framecount" class="tsd-anchor"></a>
-				<h3>frame<wbr>Count</h3>
-				<div class="tsd-signature tsd-kind-icon">frame<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+				<a name="properties" class="tsd-anchor"></a>
+				<h3>properties</h3>
+				<div class="tsd-signature tsd-kind-icon">properties<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/media.ts#L31">src/state/media.ts:31</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/commands/CommandBase.ts#L5">src/commands/CommandBase.ts:5</a></li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
-				<a name="frames" class="tsd-anchor"></a>
-				<h3>frames</h3>
-				<div class="tsd-signature tsd-kind-icon">frames<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="stillframe.html" class="tsd-signature-type">StillFrame</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/media.ts#L32">src/state/media.ts:32</a></li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
-				<a name="isused" class="tsd-anchor"></a>
-				<h3>is<wbr>Used</h3>
-				<div class="tsd-signature tsd-kind-icon">is<wbr>Used<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/media.ts#L29">src/state/media.ts:29</a></li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
-				<a name="name" class="tsd-anchor"></a>
-				<h3>name</h3>
-				<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/152ffa7/src/state/media.ts#L30">src/state/media.ts:30</a></li>
-					</ul>
-				</aside>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<a name="applytostate" class="tsd-anchor"></a>
+				<h3>apply<wbr>ToState</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">apply<wbr>ToState<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="../classes/atemstate.html" class="tsd-signature-type">AtemState</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Julusian/tv-automation-atem-connection/blob/3fd6f47/src/commands/CommandBase.ts#L7">src/commands/CommandBase.ts:7</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>state: <a href="../classes/atemstate.html" class="tsd-signature-type">AtemState</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
+							<span class="tsd-signature-symbol"> | </span>
+							<span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>
+						</h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
