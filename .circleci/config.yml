@@ -108,7 +108,11 @@ jobs:
             if ! git log --format=oneline -n 1 | grep -q "\[release\]"; then
               echo "Pre-release"
 
-              echo "export RELEASE_ARGS=\"--prerelease $CIRCLE_BUILD_NUM --skip.changelog --skip.tag --skip.commit\"" >> $BASH_ENV
+              COMMIT_TIMESTAMP=$(git log -1 --pretty=format:%ct HEAD)
+              COMMIT_DATE=$(date -d @$COMMIT_TIMESTAMP +%Y%m%d-%H%M%S)
+              GIT_HASH=$(git rev-parse --short HEAD)
+
+              echo "export RELEASE_ARGS=\"--prerelease nightly-$COMMIT_DATE-$GIT_HASH --skip.changelog --skip.tag --skip.commit\"" >> $BASH_ENV
               echo 'export PUBLISH_ARGS="--tag nightly"' >> $BASH_ENV
               source $BASH_ENV
             else
