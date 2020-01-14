@@ -141,19 +141,13 @@ jobs:
       # Clean working tree, tag, and push
       - run: git config --global user.email "git@julusian.co.uk"
       - run: git config --global user.name "Julusian"
-      - run:
-          name: Setup release
-          command: |
-            PRERELEASE_TAG=nightly-$(echo $CIRCLE_BRANCH | sed -r 's/[^a-z0-9]+/-/gi')
-
-            echo 'export PRERELEASE_TAG="$PRERELEASE_TAG"' >> $BASH_ENV
-            source $BASH_ENV
       - run: 
           name: yarn release
           command: |
             COMMIT_TIMESTAMP=$(git log -1 --pretty=format:%ct HEAD)
             COMMIT_DATE=$(date -d @$COMMIT_TIMESTAMP +%Y%m%d-%H%M%S)
             GIT_HASH=$(git rev-parse --short HEAD)
+            PRERELEASE_TAG=nightly-$(echo $CIRCLE_BRANCH | sed -r 's/[^a-z0-9]+/-/gi')
 
             yarn release $RELEASE_ARGS --prerelease $PRERELEASE_TAG-$COMMIT_DATE-$GIT_HASH --skip.changelog --skip.tag --skip.commit
       # Build and deploy
@@ -164,7 +158,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run:
           name: Publish to NPM with yarn
-          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 --tag $PRERELEASE_TAG"
+          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 --tag nightly"
 
 workflows:
   version: 2
