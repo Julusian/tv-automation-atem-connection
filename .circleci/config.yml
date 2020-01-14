@@ -102,29 +102,10 @@ jobs:
       # Clean working tree, tag, and push
       - run: git config --global user.email "git@julusian.co.uk"
       - run: git config --global user.name "Julusian"
-      - run:
-          name: Determine release type
-          command: |
-            if ! git log --format=oneline -n 1 | grep -q "\[release\]"; then
-              echo "Pre-release"
-
-              COMMIT_TIMESTAMP=$(git log -1 --pretty=format:%ct HEAD)
-              COMMIT_DATE=$(date -d @$COMMIT_TIMESTAMP +%Y%m%d-%H%M%S)
-              GIT_HASH=$(git rev-parse --short HEAD)
-
-              echo "export RELEASE_ARGS=\"--prerelease nightly-$COMMIT_DATE-$GIT_HASH --skip.changelog --skip.tag --skip.commit\"" >> $BASH_ENV
-              echo 'export PUBLISH_ARGS="--tag nightly"' >> $BASH_ENV
-              source $BASH_ENV
-            else
-              echo "Release"
-            fi
       - run: yarn release $RELEASE_ARGS
       - run: 
           name: Git push
-          command: |
-            if ! [ "$RELEASE_ARGS" ]; then
-              git push --follow-tags origin HEAD
-            fi
+          command: git push --follow-tags origin HEAD
       # Build and deploy
       - run: yarn install
       - run: yarn build
@@ -133,7 +114,57 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run:
           name: Publish to NPM with yarn
-          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 $PUBLISH_ARGS
+          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000
+
+  prerelease:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/project
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Check release is desired
+          command: |
+            if ! git log --format=oneline -n 1 | grep -q "\[publish\]"; then
+              circleci-agent step halt
+            else
+              echo "Publish"
+            fi
+      - add_ssh_keys:
+          fingerprints:
+            - "88:11:32:cb:9b:28:65:8a:b1:be:2a:4e:7f:aa:00:d4"
+      - run: mkdir -p ~/.ssh
+      - run:
+          name: Keyscan Github
+          command: ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+      # Clean working tree, tag, and push
+      - run: git config --global user.email "git@julusian.co.uk"
+      - run: git config --global user.name "Julusian"
+      - run:
+          name: Setup release
+          command: |
+            PRERELEASE_TAG=nightly-$(echo $CIRCLE_BRANCH | sed -r 's/[^a-z0-9]+/-/gi')
+
+            echo 'export PRERELEASE_TAG="$PRERELEASE_TAG"' >> $BASH_ENV
+            source $BASH_ENV
+      - run: 
+          name: yarn release
+          command: |
+            COMMIT_TIMESTAMP=$(git log -1 --pretty=format:%ct HEAD)
+            COMMIT_DATE=$(date -d @$COMMIT_TIMESTAMP +%Y%m%d-%H%M%S)
+            GIT_HASH=$(git rev-parse --short HEAD)
+
+            yarn release $RELEASE_ARGS --prerelease $PRERELEASE_TAG-$COMMIT_DATE-$GIT_HASH --skip.changelog --skip.tag --skip.commit
+      # Build and deploy
+      - run: yarn install
+      - run: yarn build
+      - run:
+          name: Write NPM Token to ~/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - run:
+          name: Publish to NPM with yarn
+          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 --tag $PRERELEASE_TAG"
 
 workflows:
   version: 2
@@ -158,3 +189,15 @@ workflows:
             branches:
               only:
                 - master
+      - prerelease:
+          requires:
+            - test-latest(node-12)
+            - test-node-10
+            - test-node-8
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              ignore:
+                - master
+            
