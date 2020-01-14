@@ -127,6 +127,7 @@ jobs:
           name: Check release is desired
           command: |
             if ! git log --format=oneline -n 1 | grep -q "\[publish\]"; then
+              echo "Skip"
               circleci-agent step halt
             else
               echo "Publish"
@@ -158,7 +159,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run:
           name: Publish to NPM with yarn
-          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 --tag nightly"
+          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 --tag nightly
 
 workflows:
   version: 2
