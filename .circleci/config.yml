@@ -102,10 +102,27 @@ jobs:
       # Clean working tree, tag, and push
       - run: git config --global user.email "git@julusian.co.uk"
       - run: git config --global user.name "Julusian"
-      - run: yarn release
+      - run:
+          name: Determine release type
+          command: |
+            if ! git log --format=oneline -n 1 | grep -q "\[release\]"; then
+              echo "Pre-release"
+              COMMIT_TIMESTAMP=$(git log -1 --pretty=format:%ct HEAD)
+              COMMIT_DATE=$(date -d @$COMMIT_TIMESTAMP +%Y%m%d-%H%M%S)
+              GIT_HASH=$(git rev-parse --short HEAD)
+              echo "export RELEASE_ARGS=\"--prerelease nightly-$COMMIT_DATE-$GIT_HASH --skip.changelog --skip.tag --skip.commit\"" >> $BASH_ENV
+              echo 'export PUBLISH_ARGS="--tag nightly"' >> $BASH_ENV
+              source $BASH_ENV
+            else
+              echo "Release"
+            fi
+      - run: yarn release $RELEASE_ARGS
       - run: 
           name: Git push
-          command: git push --follow-tags origin HEAD
+          command: |
+            if ! [ "$RELEASE_ARGS" ]; then
+              git push --follow-tags origin HEAD
+            fi
       # Build and deploy
       - run: yarn install
       - run: yarn build
@@ -114,7 +131,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run:
           name: Publish to NPM with yarn
-          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000
+          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 $PUBLISH_ARGS
 
   prerelease:
     docker:
@@ -126,13 +143,11 @@ jobs:
       - run:
           name: Check release is desired
           command: |
-            if [ $CIRCLE_BRANCH = "develop" ]; then
-              echo "Publish develop"
-            elif ! git log --format=oneline -n 1 | grep -q "\[publish\]"; then
+            if ! git log --format=oneline -n 1 | grep -q "\[publish\]"; then
               echo "Skip"
               circleci-agent step halt
             else
-              echo "Publish"
+              echo "Publish experimental"
             fi
       - add_ssh_keys:
           fingerprints:
@@ -150,16 +165,7 @@ jobs:
             COMMIT_TIMESTAMP=$(git log -1 --pretty=format:%ct HEAD)
             COMMIT_DATE=$(date -d @$COMMIT_TIMESTAMP +%Y%m%d-%H%M%S)
             GIT_HASH=$(git rev-parse --short HEAD)
-
-            # if on develop then push slightly different
-            if [ $CIRCLE_BRANCH = "develop" ]; then
-              echo 'export PUBLISH_TAG="nightly"' >> $BASH_ENV
-              PRERELEASE_TAG=nightly
-            else
-              echo 'export PUBLISH_TAG="experimental"' >> $BASH_ENV
-              PRERELEASE_TAG=nightly-$(echo $CIRCLE_BRANCH | sed -r 's/[^a-z0-9]+/-/gi')
-            fi
-            source $BASH_ENV
+            PRERELEASE_TAG=nightly-$(echo $CIRCLE_BRANCH | sed -r 's/[^a-z0-9]+/-/gi')
 
             yarn release --prerelease $PRERELEASE_TAG-$COMMIT_DATE-$GIT_HASH --skip.changelog --skip.tag --skip.commit
       # Build and deploy
@@ -170,7 +176,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run:
           name: Publish to NPM with yarn
-          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 --tag $PUBLISH_TAG
+          command: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000 --tag experimental
 
 workflows:
   version: 2
